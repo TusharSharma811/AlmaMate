@@ -45,7 +45,10 @@ body {
 .navbar ul li a:hover {
     color: #f0ad4e;
 }
-
+iframe {
+   height: 60vh;
+    border: none;
+}
 /* Mobile Menu */
 @media (max-width: 768px) {
     .navbar ul {
