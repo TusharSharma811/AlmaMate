@@ -8,64 +8,47 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         #map {
-            height: 500px;
+            
             width: 100%;
         }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-    <script>
-        function initMap() {
-            var alumniLocations = [
-                {lat: 40.712776, lng: -74.005974, name: 'John Doe'},
-                {lat: 34.052235, lng: -118.243683, name: 'Jane Smith'},
-                // Add more alumni locations here
-            ];
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 2,
-                center: {lat: 20.0, lng: 0.0}
-            });
-
-            alumniLocations.forEach(function(location) {
-                var marker = new google.maps.Marker({
-                    position: {lat: location.lat, lng: location.lng},
-                    map: map,
-                    title: location.name
-                });
-
-                var infoWindow = new google.maps.InfoWindow({
-                    content: `<h4>${location.name}</h4>`
-                });
-
-                marker.addListener('click', function() {
-                    infoWindow.open(map, marker);
-                });
-            });
-        }
-
-        window.onload = initMap;
-    </script>
+    
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">ALUMNI ASSOCIATION</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="registration.html">Register</a></li>
-            <li><a href="privacyrules.html">Privacy&Rules</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav>
+    
 
-    <section class="main-content">
-        <h2>Interactive Alumni Map</h2>
-        <p>Find and connect with alumni in your area!</p>
+    
         <div id="map"></div>
-    </section>
+        <script>
+            function initMap() {
+                var map = L.map(document.getElementById("map")).setView([28.487430, 77.493780], 13);
+                var marker = L.marker([28.487430, 77.493780]).addTo(map);
+                
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+                var alumniLocations = [
+                    {lat: 30.712776, lng: 81.005974, name: 'John Doe'},
+                    {lat: 34.052235, lng: -118.243683, name: 'Jane Smith'},
+                   
+                ];
+                alumniLocations.forEach(function(location) {
+                    var marker = L.marker([location.lat, location.lng]).addTo(map);
+                    marker.bindPopup(`<h4>${location.name}</h4>`);
+                });
+    
+            }
+    
+            window.onload = initMap;
+        </script>
 
-    <footer class="footer">
-        <p>© 2024 Alumni Association. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
