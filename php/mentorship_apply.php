@@ -1,9 +1,15 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_POST["REQUEST_METHOD"] == "POST") {
     // Collect input data
-    $name = htmlspecialchars(trim($_POST['name']));
-    $email = htmlspecialchars(trim($_POST['email']));
-    $type = htmlspecialchars(trim($_POST['type']));
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+    $name = test_input($_POST['name']);
+    $email = test_input($_POST['email']);
+    $type = test_input($_POST['type']);
 
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
