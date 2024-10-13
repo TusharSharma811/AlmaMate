@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship Program | Alumni Association</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">ALUMNI ASSOCIATION</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="privacyrules.html">Privacy&Rules</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="main-content">
+        <h2>Join Our Mentorship Program</h2>
+        <p>Become a mentor or find a mentor among our alumni network.</p>
+        <h3>Benefits of the Mentorship Program</h3>
+        <ul>
+            <li>Gain insights and advice from experienced professionals.</li>
+            <li>Expand your network within your industry.</li>
+            <li>Help guide the next generation of alumni.</li>
+        </ul>
+        <form action="php/mentorship_apply.php" method="POST">
+            <h3>Apply Now</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="type">I want to:</label>
+            <select id="type" name="type" required>
+                <option value="mentor">Become a Mentor</option>
+                <option value="mentee">Find a Mentor</option>
+            </select>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 Alumni Association. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

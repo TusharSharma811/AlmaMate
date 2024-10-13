@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Alumni Association</title>
-    <link rel="stylesheet" href="css/registration.css">
+    <title>Networking Events Signup | Alumni Association</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="navbar">
@@ -14,22 +14,28 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="login.html">Login</a></li>
             <li><a href="registration.html">Register</a></li>
+            <li><a href="privacyrules.html">Privacy&Rules</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
     <section class="main-content">
-        <h2>Register</h2>
-        <form action="php/register_process.php" method="POST">
+        <h2>Networking Events Signup</h2>
+        <p>Join us for our upcoming virtual networking events!</p>
+        <form action="php/networking_signup_process.php" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
-            
+
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Register</button>
+
+            <label for="event">Select Event:</label>
+            <select id="event" name="event" required>
+                <option value="networking_mixer">Monthly Networking Mixer</option>
+                <option value="career_fair">Career Fair</option>
+            </select>
+
+            <button type="submit">RSVP</button>
         </form>
     </section>
 

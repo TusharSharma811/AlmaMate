@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Alumni Map | Alumni Association</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function initMap() {
+            var alumniLocations = [
+                {lat: 40.712776, lng: -74.005974, name: 'John Doe'},
+                {lat: 34.052235, lng: -118.243683, name: 'Jane Smith'},
+                // Add more alumni locations here
+            ];
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 2,
+                center: {lat: 20.0, lng: 0.0}
+            });
+
+            alumniLocations.forEach(function(location) {
+                var marker = new google.maps.Marker({
+                    position: {lat: location.lat, lng: location.lng},
+                    map: map,
+                    title: location.name
+                });
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: `<h4>${location.name}</h4>`
+                });
+
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+
+        window.onload = initMap;
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">ALUMNI ASSOCIATION</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="privacyrules.html">Privacy&Rules</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="main-content">
+        <h2>Interactive Alumni Map</h2>
+        <p>Find and connect with alumni in your area!</p>
+        <div id="map"></div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 Alumni Association. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
