@@ -9,14 +9,14 @@ authRouter.post("/register", async (req, res) => {
     }
     const existinguser = await user.findOne({ email });
     if(existinguser){
-        return res.status(400).send("User already exists");
+        return res.status(400).send({data:"User already exists"});
     }
   const emailarr = email.split("@");
     if (emailarr[1] !== "glbitm.ac.in") {
         return res.status(400).send("Please provide email with gmail.com");
     }
   const User = await user.create({name , email, password  });
-    res.redirect("http://127.0.0.1:5500/index.html");
+    res.send(User);
 });
 
 authRouter.post("/login", async (req, res) => {
@@ -26,11 +26,11 @@ authRouter.post("/login", async (req, res) => {
     }
     const existinguser = await user.findOne({ email });
     if (!existinguser) {
-        return res.status(400).send("User does not exist");
+        return res.status(400).send({data : "User does not exist"});
     }
     if (existinguser.password !== password) {
         return res.status(400).send("Password does not match");
     }
-    res.redirect("http://127.0.0.1:5500/index.html");
+    res.send(existinguser);
 } );
 export default authRouter;
