@@ -19,7 +19,7 @@ export default function HomePage() {
             <div className="flex space-x-7">
               <div>
                 <Link href="/" className="flex items-center py-4 px-2">
-                  <span className="font-semibold text-gray-500 text-lg">AlumniConnect</span>
+                  <span className="font-semibold text-gray-500 text-lg">ReconnectUs</span>
                 </Link>
               </div>
             </div>

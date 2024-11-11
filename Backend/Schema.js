@@ -21,6 +21,8 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
+
+
 const mentorschema = new mongoose.Schema({
    user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -36,5 +38,7 @@ const mentorschema = new mongoose.Schema({
         default: Date.now,
     },
 });
+
+
 export const mentor = mongoose.model("Mentor", mentorschema);
 export const user =  mongoose.model("User", UserSchema);

@@ -21,7 +21,8 @@ export default function Login_register() {
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data)
-        navigate(`/home/${data._id}`)
+        localStorage.setItem('token', data.token)
+        navigate(`/home/${data.Userdata._id}`)
       })
       .catch((error) => {
         console.error('Error:', error)
@@ -45,7 +46,8 @@ export default function Login_register() {
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data)
-        navigate(`/home/${data._id}`)
+        localStorage.setItem('token', data.token)
+        navigate(`/home/${data.Userdata._id}`)
       })
       .catch((error) => {
         console.error('Error:', error)

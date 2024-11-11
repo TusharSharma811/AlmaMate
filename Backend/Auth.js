@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { user } from "./Schema.js";
+import { assigntoken } from "./middleware.js";
 const authRouter = Router();
 
 authRouter.post("/register", async (req, res) => {
@@ -16,7 +17,8 @@ authRouter.post("/register", async (req, res) => {
         return res.status(400).send("Please provide email with gmail.com");
     }
   const User = await user.create({name , email, password  });
-    res.send(User);
+    const token = assigntoken(User._id)
+    res.send({Userdata: User , token  });
 });
 
 authRouter.post("/login", async (req, res) => {
@@ -31,6 +33,8 @@ authRouter.post("/login", async (req, res) => {
     if (existinguser.password !== password) {
         return res.status(400).send("Password does not match");
     }
-    res.send(existinguser);
+    const token = assigntoken(existinguser._id)
+    res.send({Userdata: existinguser , token  });
+
 } );
 export default authRouter;
