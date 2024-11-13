@@ -5,21 +5,28 @@ import { useNavigate } from 'react-router-dom'
 export default function MentorshipForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate() ;
+  
   const handleSubmit = (event) => {
     event.preventDefault()
+   console.log(event.target )  ;
+    
     setIsSubmitting(true)
     // Simulate form submission
+    
     fetch('http://localhost:3000/mentorship/mentorregistration', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name: event.target[0].value, email: event.target[1].value, role: event.target[2].value }),
-    })
-    setTimeout(() => {
-      setIsSubmitting(false)
-      alert('Form submitted successfully!')
-    }, 2000)
+    }).then((response) => response.json())
+      .then((data) => { 
+        console.log('Success:', data)
+        setIsSubmitting(false)
+        navigate(`/home/${data.data._id}`)
+      }
+      )
+
   }
 
   return (
@@ -61,11 +68,11 @@ export default function MentorshipForm() {
               />
             </div >
             <div >
-            <label htmlFor="mentor" >Register as </label>
-           <select id="mentor" >
-            <option value="">Mentor</option>
-            <option value="mentor1">Mentee</option>
-            </select>
+                    <label htmlFor="select_role" >Register as </label>
+                    <select id="select_role" >
+                    <option value="Mentor">Mentor</option>
+                     <option value="Mentee">Mentee</option>
+                    </select>
             </div>
             <button
               type="submit"
